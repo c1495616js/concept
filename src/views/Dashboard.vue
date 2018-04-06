@@ -1,6 +1,6 @@
 <template>
   <div class="animated fadeIn">
-    <p class="text-info">Hello World</p>
+    <p class="text-info">{{ $t("message.hello") }}</p>
   </div>
 </template>
 
