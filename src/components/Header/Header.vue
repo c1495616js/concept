@@ -28,9 +28,6 @@
     </b-nav-form>
     <b-navbar-nav class="ml-auto">
       <b-nav-item class="d-md-down-none">
-        <HeaderDropdownNotif/>
-      </b-nav-item>
-      <b-nav-item class="d-md-down-none">
         <HeaderDropdownTasks/>
       </b-nav-item>
       <b-nav-item class="d-md-down-none">
@@ -49,7 +46,6 @@
 <script>
   import HeaderDropdownAccnt from './HeaderDropdownAccnt.vue'
   import HeaderDropdownTasks from './HeaderDropdownTasks.vue'
-  import HeaderDropdownNotif from './HeaderDropdownNotif.vue'
   import HeaderDropdownMssgs from './HeaderDropdownMssgs.vue'
 
   export default {
@@ -57,7 +53,7 @@
     components: {
       HeaderDropdownAccnt,
       HeaderDropdownTasks,
-      HeaderDropdownNotif,
+      // HeaderDropdownNotif,
       HeaderDropdownMssgs
     },
     methods: {
