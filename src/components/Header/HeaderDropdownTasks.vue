@@ -1,7 +1,7 @@
 <template>
       <b-nav-item-dropdown right no-caret >
         <template slot="button-content">
-          <i class="flag-icon flag-icon-tw h4"></i>
+          <i :class="langFlagMap()"></i>
         </template>
         <b-dropdown-header tag="div" class="dropdown-menu-lg text-center"><strong>You have {{itemsCount}} pending tasks</strong></b-dropdown-header>
         <b-dropdown-item v-for="lang in langs" :key="lang" @click="changeLocale(lang)">
@@ -32,6 +32,9 @@
     },
     methods: {
       langFlagMap (country) {
+        if (!country) {
+          country = this.$i18n.locale
+        }
         return `flag-icon flag-icon-${langFlagMap[country]} h5`
       },
       changeLocale (locale) {
