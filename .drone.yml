@@ -4,6 +4,6 @@ pipeline:
     host:
       - digitalocean.c1495616.com
     username: root
-    password: [ ssh_pw ]
+    password: jerry210492
     script:
       - echo "HI"
