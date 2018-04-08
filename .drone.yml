@@ -1,3 +1,13 @@
+workspace:
+  base: /vue
+  path: concept
+
+clone:
+  git:
+    image: plugins/git
+    depth: 50
+    tags: true
+
 pipeline:
   ssh:
     image: appleboy/drone-ssh
