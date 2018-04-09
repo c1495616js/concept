@@ -1,5 +1,5 @@
 <template>
-   <div class="spinner" v-if="loading" style="">
+   <div class="spinner animated fadeIn" v-if="loading" style="">
       <Loader :loading="loading" :color="getColor"></Loader>
     </div>
 </template>
