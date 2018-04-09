@@ -1,5 +1,6 @@
 <template>
   <div class="animated fadeIn">
+    <Spinner :loading="loading" ></Spinner>
     <p class="text-info">{{ $t("message.hello") }}</p>
 
     <b-card-group columns class="card-columns cols-2">
@@ -44,6 +45,7 @@ import DoughnutExample from './dashboard/DoughnutExample'
 import RadarExample from './dashboard/RadarExample'
 import PieExample from './dashboard/PieExample'
 import PolarAreaExample from './dashboard/PolarAreaExample'
+import Spinner from '../components/Spinner/Spinner'
 
 export default {
   name: 'dashboard',
@@ -53,7 +55,30 @@ export default {
     DoughnutExample,
     RadarExample,
     PieExample,
-    PolarAreaExample
+    PolarAreaExample,
+    Spinner
+  },
+  data () {
+    return {
+      loading: true
+    }
+  },
+  mounted () {
+    this.loading = true
+    this.$http.get('/photos', {
+      params: {
+
+      },
+      data: {
+        title: 'I am change title'
+      }
+    }).then((response) => {
+      this.loading = false
+      console.log(response.data)
+    }).catch((err) => {
+      this.loading = false
+      console.log(err)
+    })
   }
 }
 </script>

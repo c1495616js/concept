@@ -9,10 +9,14 @@ import router from './router'
 import VueI18n from 'vue-i18n'
 import messages from './lang/index'
 
+// axios
+import axios from './_axios'
+import VueAxios from 'vue-axios'
+
 /* use */
 Vue.use(BootstrapVue)
 Vue.use(VueI18n)
-
+Vue.use(VueAxios, axios)
 // 多國語言
 const i18n = new VueI18n({
   locale: 'en', // 语言标识
