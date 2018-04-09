@@ -10,7 +10,7 @@
   export default {
     props: ['loading', 'color'],
     computed: {
-      getColor() {
+      getColor(){
         if (this.color) {
           return this.color
         }
