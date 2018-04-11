@@ -13,8 +13,8 @@ export default new Vuex.Store({
     lang: 'tw'
   },
   actions: {
-    setLang (context, payload) {
-      context.commit('setLang', payload)
+    setLang (store, payload) {
+      store.commit('setLang', payload)
     }
   },
   mutations: {

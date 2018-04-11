@@ -11,7 +11,7 @@
 </template>
 <script>
   import langMap from '../../i18n/mapping'
-
+  import { mapActions } from 'vuex'
   export default {
     name: 'header-dropdown-language',
     data: function () {
@@ -42,9 +42,8 @@
         return langMap[lang]
       },
       // 傳到store
-      setLang: function (lang) {
-        this.$store.dispatch('setLang', lang)
-      }
+      ...mapActions(['setLang'])
+
     }
   }
 </script>
