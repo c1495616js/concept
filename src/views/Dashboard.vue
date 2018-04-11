@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <Spinner :loading="loading" ></Spinner>
-    <p class="text-info">{{ $t("message.hello") }}</p>
+    <p class="text-info">{{ $t("hello") }}</p>
 
     <b-card-group columns class="card-columns cols-2">
       <b-card header="Line Chart">

@@ -1,9 +1,13 @@
 import axios from 'axios'
+import Vue from 'vue'
+import VueAxios from 'vue-axios'
+
+const API_URL = process.env.API_URL || 'https://jsonplaceholder.typicode.com/'
 
 const HTTP = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com/',
+  baseURL: API_URL,
   timeout: 3000
   // headers: {'X-Custom-Header': 'foobar'}
 })
 
-export default HTTP
+Vue.use(VueAxios, HTTP)

@@ -5,29 +5,27 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 
-// i18n
-import VueI18n from 'vue-i18n'
-import messages from './lang/index'
+// vuex
+import store from './store'
 
-// axios
+// 多國語言
+import i18n from './i18n/index'
+
+// custom axios
 import axios from './_axios'
-import VueAxios from 'vue-axios'
 
 /* use */
+// 介面
+require('./vendors/css/flag-icon.min.css')
 Vue.use(BootstrapVue)
-Vue.use(VueI18n)
-Vue.use(VueAxios, axios)
-// 多國語言
-const i18n = new VueI18n({
-  locale: 'en', // 语言标识
-  messages
-})
 
 /* eslint-disable no-new */
-new Vue({
+export default new Vue({
   el: '#app',
   router,
   i18n,
+  axios,
+  store,
   template: '<App/>',
   components: {
     App

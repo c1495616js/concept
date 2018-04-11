@@ -39,7 +39,8 @@
     "vue-select": "2.4.0",
     "vue-spinner": "^1.0.3",
     "vue-text-mask": "6.0.0",
-    "vue2-google-maps": "0.8.4"
+    "vue2-google-maps": "0.8.4",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "7.2.4",
