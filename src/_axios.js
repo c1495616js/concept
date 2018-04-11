@@ -11,3 +11,5 @@ const HTTP = axios.create({
 })
 
 Vue.use(VueAxios, HTTP)
+
+export default HTTP

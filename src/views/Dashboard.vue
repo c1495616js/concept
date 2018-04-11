@@ -63,7 +63,7 @@ export default {
       loading: true
     }
   },
-  mounted () {
+  created () {
     this.loading = true
     this.$http.get('/photos', {
       params: {

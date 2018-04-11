@@ -30,8 +30,13 @@ export default {
   },
   data () {
     return {
-      nav: nav.items
+      nav: []
     }
+  },
+  mounted() { // ajax
+    setTimeout(() => {
+      this.nav = nav.items
+    }, 50)
   },
   computed: {
     name () {

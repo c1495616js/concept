@@ -20,7 +20,8 @@ require('./vendors/css/flag-icon.min.css')
 Vue.use(BootstrapVue)
 
 /* eslint-disable no-new */
-export default new Vue({
+// const app = Vue.extend()
+const app = new Vue({
   el: '#app',
   router,
   i18n,
@@ -31,3 +32,5 @@ export default new Vue({
     App
   }
 })
+
+export default app
