@@ -9,11 +9,11 @@ export default {
       datasets: [
         {
           backgroundColor: [
-            '#0BA7DA',
-            '#FFC200',
-            '#EA398C'
+            '#20a8d8',
+            '#ffc107',
+            '#e83e8c'
           ],
-          data: [90, 10, 5]
+          data: [92, 7, 1]
         }
       ]
     }, {responsive: true, maintainAspectRatio: false})

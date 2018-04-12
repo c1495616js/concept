@@ -1,12 +1,12 @@
 export default {
-  name: '業者管理',
-  url: '/mgmt',
-  icon: 'icon-pencil',
+  name: '瓦斯業者管理',
+  url: '/forms',
+  icon: 'icon-note',
   children: [
     {
       name: '業者清單',
-      url: '/mgmt/group',
-      icon: 'icon-pencil'
+      url: '/forms/basic-forms',
+      icon: 'icon-note'
     }
   ]
 }

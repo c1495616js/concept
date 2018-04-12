@@ -1,17 +1,22 @@
 export default {
   name: '收費管理',
-  url: '/mgmt',
-  icon: 'icon-pencil',
+  url: '/buttons',
+  icon: 'fa fa-credit-card-alt',
   children: [
     {
-      name: '出帳設定',
-      url: '/mgmt/group',
-      icon: 'icon-pencil'
+      name: '收費紀錄查詢',
+      url: '/buttons/buttons',
+      icon: 'icon-list'
     },
     {
-      name: '出帳作業',
-      url: '/mgmt/personal',
-      icon: 'icon-pencil'
+      name: '收費設定',
+      url: '/buttons/button-dropdowns',
+      icon: 'icon-settings'
+    },
+    {
+      name: '電子發票',
+      url: '/buttons/button-groups',
+      icon: 'fa fa-scribd'
     }
   ]
 }

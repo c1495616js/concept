@@ -53,8 +53,8 @@ let router = new Router({
   scrollBehavior: () => ({ y: 0 })
 })
 
-setTimeout(() => {
-  router.addRoutes(routes)
-}, 1000)
+// setTimeout(() => {
+router.addRoutes(routes)
+// }, 1000)
 
 export default router
