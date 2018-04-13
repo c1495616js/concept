@@ -5,35 +5,28 @@
           </div>
           <b-form-group
             label="統一編號"
-            label-for="bp_unicode"
+            label-for="bpUnicode"
             :label-cols="3"
             :horizontal="true">
-            <b-form-input id="bp_unicode" type="text" v-model="rowData.bp_unicode" :value="rowData.bp_unicode"></b-form-input>
+            <b-form-input id="bpUnicode" type="text" v-model="data.bpUnicode" :value="data.bpUnicode"></b-form-input>
           </b-form-group>
           <b-form-group
             label="公司編號"
-            label-for="bp_docno"
+            label-for="bpDocno"
             :label-cols="3"
             :horizontal="true">
-            <b-form-input id="bp_docno" type="text" v-model="rowData.bp_docno" :value="rowData.bp_docno"></b-form-input>
+            <b-form-input id="bpDocno" type="text" v-model="rowData.bpDocno" :value="rowData.bpDocno"></b-form-input>
           </b-form-group>
           <b-form-group
             label="公司名稱"
-            label-for="bp_name"
+            label-for="bpName"
             :label-cols="3"
             :horizontal="true">
-            <b-form-input id="bp_name" type="text" ></b-form-input>
-          </b-form-group>
-          <b-form-group
-            label="公司顯示名稱"
-            label-for="bp_display_name"
-            :label-cols="3"
-            :horizontal="true">
-            <b-form-input id="bp_display_name" type="text" v-model="rowData.bp_display_name" :value="rowData.bp_display_name"></b-form-input>
+            <b-form-input id="bpName" type="text" v-model="data.bpName" :value="data.bpName"></b-form-input>
           </b-form-group>
           <b-form-group
             label="公司地址"
-            label-for="bp_address"
+            label-for="bpAddress"
             :label-cols="3"
             :horizontal="true">
             <b-container>
@@ -46,7 +39,7 @@
                   </b-form-select>
                 </b-col>
                 <b-col>
-                   <b-form-input id="bp_address" type="text" v-model="rowData.bp_address" :value="rowData.bp_address"></b-form-input>
+                   <b-form-input id="bpAddress" type="text" v-model="data.bpAddress" :value="data.bpAddress"></b-form-input>
                 </b-col>
               </b-row>
             </b-container>
@@ -97,10 +90,27 @@
 
   export default {
     name: 'BPS_Edit',
-    props: ['changeTab','rowData','action'],
+    data(){
+      return {
+        data: {}
+      }
+    },
+    props: ['rowData','changeTab','action'],
     computed:{
       getSubmitBtnName(){
         return this.action === 'view' ? '確定' : this.action === 'edit' ? '更新' : '新增';
+      }
+    },
+    watch:{
+      rowData: function() {
+        this.data = {};
+        if(this.rowData && this.rowData.bpId){
+          console.log(this.rowData.bpId);
+          this.$http.get(`/api/gsm/gas_supplier/${this.rowData.bpId}`).then((res)=>{return res.data.data})
+          .then((data) => {
+            this.data = data;
+          })
+        }
       }
     },
     methods:{

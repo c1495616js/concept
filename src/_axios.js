@@ -2,10 +2,10 @@ import axios from 'axios'
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
 
-const API_URL = process.env.API_URL || 'http://210.65.47.72/myweb/home'
+const API_URL = process.env.API_URL || 'http://104.199.182.22:8080/bpbs'
 
 const HTTP = axios.create({
-  // baseURL: API_URL,
+  baseURL: API_URL,
   timeout: 3000
   // headers: {'X-Custom-Header': 'foobar'}
 })

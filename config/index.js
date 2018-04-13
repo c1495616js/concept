@@ -41,6 +41,13 @@ module.exports = {
         pathRewrite: {
           '^/fake': ''
         }
+      },
+      '/baseUrl': {
+        target: 'http://104.199.182.22:8080/bpbs',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/baseUrl': ''
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

@@ -1,17 +1,19 @@
 <template>
   <div>
     <b-card no-block>
-      <b-button size="sm" :variant="getAddBtnStatus.variant" @click="(event) => { doEdit({},'add') }"><i :class="getAddBtnStatus.icon"></i> {{getAddBtnStatus.name}}</b-button>
+      <b-button size="sm" :variant="getAddBtnStatus.variant" @click="(event) => { doEdit({}, 'add') }"><i :class="getAddBtnStatus.icon"></i> {{getAddBtnStatus.name}}</b-button>
       <b-tabs small card ref="tabs" v-model="tabIndex">
         <b-tab>
-           <table id="products-datatable" class="table table-bordered table-hover table-responsive" width="100%">
+           <table id="dt-table" class="table table-bordered table-hover table-responsive" width="100%">
              <thead>
                <tr>
                  <th>id</th>
                  <th>公司名稱</th>
-                 <th>公司地址</th>
-                 <th>人員</th>
-                 <th>Email</th>
+                 <th>統一編號</th>
+                 <th>地址</th>
+                 <th>客服</th>
+                 <th>電話</th>
+                 <th>傳真</th>
                  <th style="min-width:100px;max-width:100px;width:100px"></th>
                </tr>
              </thead>
@@ -39,7 +41,7 @@ configureDataTable($)
 
 $.fn.DataTable = dataTable
 
-const url = '/myweb/api/test/get_data'
+const url = '/baseUrl/api/gsm/gas_supplier_dt'
 // const url = '/fake/posts'
 
 export default {
@@ -49,8 +51,8 @@ export default {
   },
   data(){
     return {
-      products: [],
-      productsTable: {},
+      dts: [],
+      dtTable: {},
       tabIndex: 0,
       rowData:{},
       action: ''
@@ -78,7 +80,7 @@ export default {
   mounted() {
           //this.getProducts();
           var that = this;
-          var table = $('#products-datatable').DataTable({
+          var table = $('#dt-table').DataTable({
               ajax: {
                   url: url,
                   dataSrc: 'items',
@@ -87,24 +89,30 @@ export default {
               },
               columns: [
                 {
-                  data: "bp_id" //产品名字
+                  data: "bpId" //产品名字
                 },
                 {
-                  data: "bp_display_name"
+                  data: "bpName"
                 },
                 {
-                  data: "bp_address"
+                  data: "bpUnicode"
                 },
                 {
-                  data: "bp_contact_man"
+                  data: "caName"
                 },
                 {
-                  data: "bp_contact_email"
+                  data: "bpServiceTel"
+                },
+                {
+                  data: "bpTel"
+                },
+                {
+                  data: "bpFax"
                 },
                 null
               ],
               columnDefs : [{
-                targets : 5,
+                targets : 7,
                 data : null,
                 defaultContent : dfContent,
                 searchable : false,
@@ -147,17 +155,13 @@ export default {
                   });
                   // delete click
               }
-              // language: {
-              //     "url": "./static/datatable_zh_CN.json"
-              // }
           }).api();
           //保存datatables对象，可进行相关的api调用
-          that.$set(that, 'productsTable', table);
+          that.$set(that, 'dtTable', table);
   },
   methods:{
-    doEdit(data, action){
-      this.rowData = data;
-      console.log(this.rowData)
+    doEdit(rowData, action){
+      this.rowData = rowData;
       this.action = action;
       this.changeTab();
     },
@@ -166,7 +170,7 @@ export default {
       this.reload();
     },
     reload(){
-      this.productsTable.ajax.reload()
+      this.dtTable.ajax.reload()
     }
   }
 }
