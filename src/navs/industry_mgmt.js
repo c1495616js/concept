@@ -1,11 +1,11 @@
 export default {
   name: '瓦斯業者管理',
-  url: '/forms',
+  url: '/bp',
   icon: 'icon-note',
   children: [
     {
       name: '業者清單',
-      url: '/forms/basic-forms',
+      url: '/bp/bps',
       icon: 'icon-note'
     }
   ]

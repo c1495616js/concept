@@ -1,16 +1,11 @@
 export default {
   name: '系統設定',
-  url: '/forms',
+  url: '/setting',
   icon: 'icon-note',
   children: [
     {
       name: '帳號管理',
-      url: '/forms/basic-forms',
-      icon: 'icon-note'
-    },
-    {
-      name: '帳號管理',
-      url: '/forms/advanced-forms',
+      url: '/setting/users',
       icon: 'icon-note'
     },
     {

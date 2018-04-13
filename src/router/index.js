@@ -37,6 +37,16 @@ const routes = [
         path: 'monitor/list',
         name: 'Test',
         component: createRoute('Test')
+      },
+      {
+        path: 'bp/bps',
+        name: '業者清單',
+        component: createRoute('bp/bps/Bps')
+      },
+      {
+        path: 'setting/users',
+        name: '帳號管理',
+        component: createRoute('setting/users/Users')
       }
     ]
   },
@@ -50,11 +60,12 @@ const routes = [
 let router = new Router({
   mode: 'hash',
   linkActiveClass: 'open active',
-  scrollBehavior: () => ({ y: 0 })
+  scrollBehavior: () => ({ y: 0 }),
+  routes: routes
 })
 
 // setTimeout(() => {
-router.addRoutes(routes)
+// router.addRoutes(routes)
 // }, 1000)
 
 export default router
