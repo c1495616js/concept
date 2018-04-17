@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon -w server.js -w server server-entry.js"
+    "dev": "nodemon -w server.js -w server server-entry.js",
+    "start": "node server-entry.js",
+    "test": ""
   },
   "dependencies": {
     "dotenv": "^5.0.1",
