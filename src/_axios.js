@@ -10,6 +10,12 @@ const HTTP = axios.create({
   // headers: {'X-Custom-Header': 'foobar'}
 })
 
+// export const setAuthHeader = (token) => {
+//   HTTP.defaults.headers.common['Authorization'] = `Bearer ${token}`
+// }
+
+// setAuthHeader(localStorage.getItem('ACCESS_TOKEN'))
+
 Vue.use(VueAxios, HTTP)
 
 export default HTTP

@@ -14,11 +14,16 @@ import i18n from './i18n/index'
 // custom axios
 import axios from './_axios'
 
+// global notification
+import Notifications from 'vue-notification'
+
+
 /* use */
 // 介面
 require('./vendors/css/flag-icon.min.css')
 Vue.use(BootstrapVue)
 
+Vue.use(Notifications)
 /* eslint-disable no-new */
 // const app = Vue.extend()
 const app = new Vue({

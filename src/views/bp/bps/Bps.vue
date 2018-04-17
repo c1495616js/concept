@@ -78,86 +78,86 @@ export default {
     }
   },
   mounted() {
-          //this.getProducts();
-          var that = this;
-          var table = $('#dt-table').DataTable({
-              ajax: {
-                  url: url,
-                  dataSrc: 'items',
-                  dataType: 'json',
-                  type : 'post'
-              },
-              columns: [
-                {
-                  data: "bpId" //产品名字
-                },
-                {
-                  data: "bpName"
-                },
-                {
-                  data: "bpUnicode"
-                },
-                {
-                  data: "caName"
-                },
-                {
-                  data: "bpServiceTel"
-                },
-                {
-                  data: "bpTel"
-                },
-                {
-                  data: "bpFax"
-                },
-                null
-              ],
-              columnDefs : [{
-                targets : 7,
-                data : null,
-                defaultContent : dfContent,
-                searchable : false,
-                orderable : false,
-                width : "5%",
-                className : ''
-              }, {
-                "targets" : 1,
-                "orderable" : false
-              }, {
-                "targets" : 0,
-                "orderable" : false
-              }],
-              drawCallback: function(settings) {
-                  //表格每次重绘回调函数，此处可进行相关插件初始化
+    //this.getProducts();
+    var that = this;
+    var table = $('#dt-table').DataTable({
+        ajax: {
+            url: url,
+            dataSrc: 'items',
+            dataType: 'json',
+            type : 'post'
+        },
+        columns: [
+          {
+            data: "bpId" //产品名字
+          },
+          {
+            data: "bpName"
+          },
+          {
+            data: "bpUnicode"
+          },
+          {
+            data: "bpZipcode"
+          },
+          {
+            data: "bpServiceTel"
+          },
+          {
+            data: "bpTel"
+          },
+          {
+            data: "bpFax"
+          },
+          null
+        ],
+        columnDefs : [{
+          targets : 7,
+          data : null,
+          defaultContent : dfContent,
+          searchable : false,
+          orderable : false,
+          width : "5%",
+          className : ''
+        }, {
+          "targets" : 1,
+          "orderable" : false
+        }, {
+          "targets" : 0,
+          "orderable" : false
+        }],
+        drawCallback: function(settings) {
+            //表格每次重绘回调函数，此处可进行相关插件初始化
 
-              },
-              fnRowCallback: ( nRow, aData, iDisplayIndex, iDisplayIndexFull ) => {
-                  var _rtd = $(nRow).find('td');
-                  _rtd = _rtd.not(':last');
+        },
+        fnRowCallback: ( nRow, aData, iDisplayIndex, iDisplayIndexFull ) => {
+            var _rtd = $(nRow).find('td');
+            _rtd = _rtd.not(':last');
 
-                  // row click
-                  _rtd.addClass('pointer').on('click', function(){
-                    that.doEdit(aData, 'view');
-                    // app.doEdit(aData.id);
+            // row click
+            _rtd.addClass('pointer').on('click', function(){
+              that.doEdit(aData, 'view');
+              // app.doEdit(aData.id);
 
-                    // // remove all highlight first
-                    // $(this).parent().parent().find('tr').removeClass('active');
+              // // remove all highlight first
+              // $(this).parent().parent().find('tr').removeClass('active');
 
-                    // app._lastPk = aData.id;
-                    // app._tr = $(this).parent();
-                    // setTimeout(function(){
-                    //   app._tr.addClass('active');
-                    // }, 100);
-                  });
+              // app._lastPk = aData.id;
+              // app._tr = $(this).parent();
+              // setTimeout(function(){
+              //   app._tr.addClass('active');
+              // }, 100);
+            });
 
-                  // edit click
-                  $(nRow).find("a").eq(0).click(()=>{
-                    that.doEdit(aData, 'edit');
-                  });
-                  // delete click
-              }
-          }).api();
-          //保存datatables对象，可进行相关的api调用
-          that.$set(that, 'dtTable', table);
+            // edit click
+            $(nRow).find("a").eq(0).click(()=>{
+              that.doEdit(aData, 'edit');
+            });
+            // delete click
+        }
+    }).api();
+    //保存datatables对象，可进行相关的api调用
+    that.$set(that, 'dtTable', table);
   },
   methods:{
     doEdit(rowData, action){

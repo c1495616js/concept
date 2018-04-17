@@ -1,5 +1,9 @@
 <template>
+<div>
+  <notifications group="post" />
   <router-view></router-view>
+</div>
+
 </template>
 
 <script>
