@@ -39,7 +39,7 @@
         </b-dropdown-item> -->
         <!-- <b-dropdown-divider></b-dropdown-divider> -->
         <!-- <b-dropdown-item><i class="fa fa-shield"></i> Lock Account</b-dropdown-item> -->
-        <b-dropdown-item><i class="fa fa-lock"></i> Logout</b-dropdown-item>
+        <b-dropdown-item @click.prevent="doLogout"><i class="fa fa-lock"></i> Logout</b-dropdown-item>
       </b-nav-item-dropdown>
 </template>
 <script>
@@ -47,6 +47,28 @@
     name: 'header-dropdown-accnt',
     data: () => {
       return { itemsCount: 42 }
+    },
+    methods: {
+      doLogout(){
+        this.$http.post('/api/logout').then(res => res.data).then((res)=>{
+          if(res.status == 'success'){
+            this.$notify({
+            group: 'post',
+            title: '登出成功',
+            text: 'Good Bye!',
+          });
+            sessionStorage.setItem('ACCESS_TOKEN', null)
+            this.$router.push('/login')
+          }else{
+            this.$notify({
+            group: 'post',
+            title: '登出失敗',
+            text: res.errMsg,
+            type: 'warn',
+          });
+          }
+        })
+      }
     }
   }
 </script>

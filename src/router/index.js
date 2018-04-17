@@ -78,7 +78,7 @@ router.beforeEach((to, from, next) => {
     next() // 否则跳转回登录页
   } else {
     if (token !== 'null' && token !== null) {
-      Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token // 注意Bearer后有个空格
+      Vue.prototype.$http.defaults.headers.common['Authorization'] = token // 注意Bearer后有个空格
       next() // 如果有token就正常转向
     } else {
       next('/login') // 否则跳转回登录页

@@ -52,6 +52,13 @@ import qs from 'qs'
 export default {
   name: 'Login',
   data(){
+    if(process.env.NODE_ENV == 'production'){
+      return {
+        unicode: '',
+        login_id: '',
+        login_pwd: ''
+      }
+    }
     return {
       unicode: '43147546',
       login_id: '000001@shintaogas.com.tw',
@@ -83,7 +90,10 @@ export default {
             text: 'Welcome',
             type: 'success',
           });
-          this.$router.push('/') // 进入todolist页面，登录成功
+          setTimeout(()=>{
+            this.$router.push('/') // 进入todolist页面，登录成功
+          },800)
+
         } else {
           this.$notify({
             group: 'post',
