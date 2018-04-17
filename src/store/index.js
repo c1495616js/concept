@@ -10,7 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   strict: debug,
   state: {
-    lang: 'tw'
+    lang: 'tw',
+    baseUrl: 'http://104.199.182.22:8080/bpbs'
   },
   actions: {
     setLang (store, payload) {

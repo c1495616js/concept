@@ -36,12 +36,13 @@ import dataTable from 'datatables.net-bs4'
 import configureDataTable from '@/utils/configureDataTable'
 import { dfContent } from '@/utils/configureDataTable'
 import Edit from './Edit.vue'
+import { mapState } from 'vuex'
 
 configureDataTable($)
 
 $.fn.DataTable = dataTable
 
-const url = '/baseUrl/api/gsm/gas_supplier_dt'
+const url = '/api/gsm/gas_supplier_dt'
 // const url = '/fake/posts'
 
 export default {
@@ -59,6 +60,7 @@ export default {
     }
   },
   computed:{
+    ...mapState(['baseUrl']),
     getAddBtnStatus(){
       let icon, variant, name;
       if(this.tabIndex == 0){
@@ -80,12 +82,16 @@ export default {
   mounted() {
     //this.getProducts();
     var that = this;
+    const token = sessionStorage.getItem('ACCESS_TOKEN');
     var table = $('#dt-table').DataTable({
         ajax: {
-            url: url,
+            url: this.baseUrl + url,
             dataSrc: 'items',
             dataType: 'json',
-            type : 'post'
+            type : 'post',
+            headers: {
+              Authorization: token
+            },
         },
         columns: [
           {
