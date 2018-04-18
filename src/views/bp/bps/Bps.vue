@@ -39,7 +39,7 @@
 // import Test from '@/views/Test.vue'
 import $ from 'jquery'
 import dataTable from 'datatables.net-bs4'
-require('datatables.net-bs4/css/dataTables.bootstrap4.css')
+
 import configureDataTable from '@/utils/configureDataTable'
 import { dfContent } from '@/utils/configureDataTable'
 import Edit from './Edit.vue'

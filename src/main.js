@@ -31,6 +31,7 @@ import Notifications from 'vue-notification'
 /* use */
 // 介面
 require('./vendors/css/flag-icon.min.css')
+require('datatables.net-bs4/css/dataTables.bootstrap4.css')
 Vue.use(BootstrapVue)
 
 Vue.use(Notifications)

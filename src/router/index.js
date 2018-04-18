@@ -26,7 +26,7 @@ const routes = [
     children: [
       {
         path: 'dashboard',
-        name: 'Dashboard',
+        name: '儀表板',
         component: createRoute('Dashboard')
       },
       {
