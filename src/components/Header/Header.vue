@@ -10,7 +10,7 @@
     <b-nav-form is-nav-bar class="d-md-down-none">
 
     </b-nav-form>
-    <ul class="nav navbar-nav d-md-down-none">
+    <!-- <ul class="nav navbar-nav d-md-down-none">
       <li class="nav-item px-3">
         <a class="nav-link" href="/index.html">瓦斯表監控</a>
       </li>
@@ -23,7 +23,7 @@
       <li class="nav-item px-3">
         <a class="nav-link" href="/index.html">統計報表</a>
       </li>
-    </ul>
+    </ul> -->
     <b-navbar-nav class="ml-auto">
       <b-nav-item class="d-md-down-none">
         <HeaderDropdownLanguage/>
