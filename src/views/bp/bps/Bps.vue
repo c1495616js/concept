@@ -4,13 +4,13 @@
       <b-button size="sm" :variant="getAddBtnStatus.variant" @click="(event) => { doEdit({}, 'add') }"><i :class="getAddBtnStatus.icon"></i> {{getAddBtnStatus.name}}</b-button>
       <b-tabs small card ref="tabs" v-model="tabIndex">
         <b-tab>
-           <table id="dt-table" class="table table-bordered table-hover table-responsive" width="100%">
+           <table id="dt-table" class="table table-striped table-bordered table-hover" width="100%">
              <thead>
                <tr>
                  <th>id</th>
                  <th>公司名稱</th>
                  <th>統一編號</th>
-                 <th>地址</th>
+                 <th>郵遞區號</th>
                  <th>客服</th>
                  <th>電話</th>
                  <th>傳真</th>
@@ -39,6 +39,7 @@
 // import Test from '@/views/Test.vue'
 import $ from 'jquery'
 import dataTable from 'datatables.net-bs4'
+require('datatables.net-bs4/css/dataTables.bootstrap4.css')
 import configureDataTable from '@/utils/configureDataTable'
 import { dfContent } from '@/utils/configureDataTable'
 import Edit from './Edit.vue'
@@ -175,6 +176,7 @@ export default {
             })
         }
     }).api();
+
     //保存datatables对象，可进行相关的api调用
     that.$set(that, 'dtTable', table);
   },
@@ -227,5 +229,10 @@ export default {
 }
 .pointer {
   cursor: pointer;
+}
+
+/* table.dt */
+table.dataTable {
+  border-collapse: collapse !important;
 }
 </style>
