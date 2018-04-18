@@ -100,7 +100,11 @@
 				></gmap-marker>
 		    </gmap-map>
 		    </b-card> -->
-          <GoogleMaps></GoogleMaps>
+          <GoogleMaps>
+            <template slot="header">
+              區域瓦斯表顯示
+            </template>
+          </GoogleMaps>
         </b-col>
         <b-col sm="12" lg="5" class="d-none d-md-block">
         	<b-card header="瓦斯錶設錶備狀態">

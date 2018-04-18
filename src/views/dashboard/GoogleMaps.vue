@@ -1,8 +1,10 @@
 <template>
   <b-card>
     <div slot="header">
-      Vue Google Maps
-      <div class="card-actions"><a href="https://github.com/xkjyeah/vue-google-maps" target="_blank">docs</a></div>
+      <slot name="header">
+        Google Map
+        <div class="card-actions"><a href="https://github.com/xkjyeah/vue-google-maps" target="_blank">docs</a></div>
+      </slot>
     </div>
     <gmap-map
       :center="center"
