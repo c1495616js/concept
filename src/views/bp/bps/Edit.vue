@@ -251,7 +251,8 @@
             this.zip = new ZipClass(data.bpZipcode)
           })
         }else{
-          this.form = new Form({
+          if(process.env.NODE_ENV === 'production'){
+            this.form = new Form({
             "bpAddress": "",
             "bpCapital": "",
             "bpContactEmail": "",
@@ -273,6 +274,32 @@
             "bpUnicode": "",
             "bpZipcode": "100"
           })
+          }else{
+            this.form = new Form({
+  "bpAddress": "string",
+  "bpCapital": "string",
+  "bpContactEmail": "string",
+  "bpContactMan": "string",
+  "bpContactTel": "string",
+  "bpDescription": "string",
+  "bpDisplayName": "string",
+  "bpDocno": "string",
+  "bpFax": "string",
+  "bpId": 0,
+  "bpIsAdmin": "0",
+  "bpLogoUrl": "string",
+  "bpName": "string",
+  "bpRepresentMan": "string",
+  "bpRepresentTel": "string",
+  "bpServiceEmail": "string",
+  "bpServiceTel": "string",
+  "bpStatus": "string",
+  "bpTel": "string",
+  "bpUnicode": "string",
+  "bpZipcode": "103"
+})
+          }
+
         }
       },
     },
@@ -300,11 +327,12 @@
         }
 
       if(this.action === 'add'){
-        const payload = (data) => {
-          return { gasSupplier: data }
-        }
+        // const payload = (data) => {
+        //   return { gasSupplier: data }
+        // }
 
-        this.form.post(`/api/gsm/gas_supplier`,payload).then((res)=>{
+        this.form.post(`/api/gsm/gas_supplier`).then((res)=>{
+          if(res.status === 'success'){
             this.$notify({
               group: 'post',
               title: '系統通知',
@@ -312,6 +340,15 @@
               type: 'success'
             });
             this.changeTab()
+          }else{
+            this.$notify({
+            group: 'post',
+            title: '新增失敗',
+            text: res.errMsg,
+            type: 'warn',
+          });
+          }
+
           })
           return
       }
