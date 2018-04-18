@@ -79,7 +79,7 @@
     <b-card>
       <b-row>
         <b-col sm="12" lg="7">
-            <b-card header="區域瓦斯表顯示">
+            <!-- <b-card header="區域瓦斯表顯示">
 				<gmap-map
 					:center="center"
 					:zoom="11"
@@ -99,7 +99,8 @@
 					@click="toggleInfoWindow(m, index)"
 				></gmap-marker>
 		    </gmap-map>
-		    </b-card>
+		    </b-card> -->
+          <GoogleMaps></GoogleMaps>
         </b-col>
         <b-col sm="12" lg="5" class="d-none d-md-block">
         	<b-card header="瓦斯錶設錶備狀態">
@@ -107,6 +108,10 @@
 				  <pie-example  :width="300" :height="300" />
 				</div>
 			</b-card>
+
+    <!-- /////////// -->
+
+    <!-- /////////// -->
 			<b-card header="系統狀態">
 				<b-table class="mb-0 table-outline" responsive="sm" hover :items="tableItems2" :fields="tableFields2" head-variant="light">
 		            <div slot="avatar" class="avatar" slot-scope="item">
@@ -243,6 +248,7 @@ import CalloutChartExample from './dashboard/CalloutChartExample'
 import { Callout } from '../components/'
 
 import PieExample from './charts/PieExample'
+import GoogleMaps from './dashboard/GoogleMaps.vue'
 
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Vue from 'vue'
@@ -267,7 +273,8 @@ export default {
     MainChartExample,
     SocialBoxChartExample,
     CalloutChartExample,
-    PieExample
+    PieExample,
+    GoogleMaps
   },
   data: function () {
     return {

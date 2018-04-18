@@ -17,6 +17,17 @@ import axios from './_axios'
 // global notification
 import Notifications from 'vue-notification'
 
+// // google map
+// import * as VueGoogleMaps from 'vue2-google-maps'
+// Vue.use(VueGoogleMaps, {
+//   load: {
+//     key: 'AIzaSyASyYRBZmULmrmw_P9kgr7_266OhFNinPA'
+//     // To use the Google Maps JavaScript API, you must register your app project on the Google API Console and get a Google API key which you can add to your app
+//     // v: 'OPTIONAL VERSION NUMBER',
+//     // libraries: 'places', //// If you need to use place input
+//   }
+// })
+
 /* use */
 // 介面
 require('./vendors/css/flag-icon.min.css')
