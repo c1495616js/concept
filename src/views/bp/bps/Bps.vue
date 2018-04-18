@@ -26,6 +26,12 @@
         </b-tab>
       </b-tabs>
     </b-card>
+
+    <!-- delete modal -->
+    <!-- <DeleteModal :show="deleteModalShow" @doDelte="doDelete" @close="closeDeleteModal"></DeleteModal> -->
+    <b-modal title="刪除" centered class="modal-danger" v-model="deleteModalShow" @ok="doDelete" cancel-title="取消" ok-title="確認"    ok-variant="danger">
+      確認刪除？
+    </b-modal>
   </div>
 </template>
 
@@ -37,6 +43,7 @@ import configureDataTable from '@/utils/configureDataTable'
 import { dfContent } from '@/utils/configureDataTable'
 import Edit from './Edit.vue'
 import { mapState } from 'vuex'
+import DeleteModal from '../../pages/DeleteModal.vue'
 
 configureDataTable($)
 
@@ -48,7 +55,8 @@ const url = '/api/gsm/gas_supplier_dt'
 export default {
   name: 'Bps',
   components:{
-    Edit
+    Edit,
+    DeleteModal
   },
   data(){
     return {
@@ -56,7 +64,8 @@ export default {
       dtTable: {},
       tabIndex: 0,
       rowData:{},
-      action: ''
+      action: '',
+      deleteModalShow: false
     }
   },
   computed:{
@@ -160,6 +169,10 @@ export default {
               that.doEdit(aData, 'edit');
             });
             // delete click
+            $(nRow).find("a").eq(1).click(()=>{
+              that.setDeleteModal(aData);
+              // that.doDelete(aData);
+            })
         }
     }).api();
     //保存datatables对象，可进行相关的api调用
@@ -170,6 +183,32 @@ export default {
       this.rowData = rowData;
       this.action = action;
       this.changeTab();
+    },
+    setDeleteModal(rowData){
+      this.rowData = rowData
+      this.deleteModalShow = true
+    },
+    doDelete(){
+      this.deleteModalShow = false
+      this.$http.delete(`/api/gsm/gas_supplier/${this.rowData.bpId}`).then(res => res.data).then((res) => {
+        if(res.status == "success"){
+          this.$notify({
+              group: 'post',
+              title: '系統通知',
+              text: '刪除成功',
+              type: 'success'
+            });
+        }else{
+          this.$notify({
+            group: 'post',
+            title: '刪除失敗',
+            text: res.errMsg,
+            type: 'warn',
+          });
+        }
+        this.reload();
+      })
+
     },
     changeTab(){
       this.tabIndex = this.tabIndex === 0 ? 1 : 0;

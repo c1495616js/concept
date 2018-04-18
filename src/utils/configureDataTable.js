@@ -3,7 +3,7 @@ import lang from '@/vendors/js/zh-Tw.json'
 
 const dfContent = `
 <a href="javascript:void(0)" class="btn btn-sm btn-info" role="button" style="margin-right: 5px;"><i class="fa fa-edit fa-lg"></i></a>
-<a href="#deleteModal" role="button" class="btn btn-sm btn-danger" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>
+<a href="javascript:void(0)" role="button" class="btn btn-sm btn-danger" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>
 `
 
 export { dfContent }

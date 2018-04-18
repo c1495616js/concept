@@ -114,8 +114,8 @@ class Form {
    * .
    * @param {string} url
    */
-  post(url) {
-      return this.submit('post', url);
+  post(url, payload) {
+      return this.submit('post', url, payload);
   }
 
 
@@ -124,8 +124,8 @@ class Form {
    * .
    * @param {string} url
    */
-  put(url) {
-      return this.submit('put', url);
+  put(url, payload) {
+      return this.submit('put', url, payload);
   }
 
 
@@ -134,8 +134,8 @@ class Form {
    * .
    * @param {string} url
    */
-  patch(url) {
-      return this.submit('patch', url);
+  patch(url, payload) {
+      return this.submit('patch', url, payload);
   }
 
 
@@ -144,8 +144,8 @@ class Form {
    * .
    * @param {string} url
    */
-  delete(url) {
-      return this.submit('delete', url);
+  delete(url, payload) {
+      return this.submit('delete', url, payload);
   }
 
 
@@ -155,9 +155,9 @@ class Form {
    * @param {string} requestType
    * @param {string} url
    */
-  submit(requestType, url) {
+  submit(requestType, url, payload = x => x) {
       return new Promise((resolve, reject) => {
-          app.$http[requestType](url, this.data())
+          app.$http[requestType](url, payload(this.data()))
               .then(response => {
                   this.onSuccess(response.data);
 

@@ -17,7 +17,6 @@ import axios from './_axios'
 // global notification
 import Notifications from 'vue-notification'
 
-
 /* use */
 // 介面
 require('./vendors/css/flag-icon.min.css')
